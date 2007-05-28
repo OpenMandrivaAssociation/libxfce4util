@@ -1,79 +1,74 @@
-%define lib_major	4
-%define lib_name	%mklibname xfce4util %{lib_major} 
-%define version 	4.4.1
-%define release 	1
-%define __libtoolize	/bin/true
-%define __cputoolize	/bin/true
+%define major 4
+%define libname %mklibname xfce4util %{major} 
 
-Summary: 	Utility library for the Xfce4 desktop environment
-Name: 		libxfce4util
-Version: 	%{version}
-Release: 	%mkrel %{release}
+Summary:	Utility library for the Xfce4 desktop environment
+Name:		libxfce4util
+Version:	4.4.1
+Release:	%mkrel 2
 License:	BSD
-URL: 		http://www.xfce.org/
-Source0: 	%{name}-%{version}.tar.bz2
-Group: 		Graphical desktop/Xfce
-BuildRoot: 	%{_tmppath}/%{name}-root
-BuildRequires: 	glib2-devel >= 2.0.0
+Group:		Graphical desktop/Xfce
+URL:		http://www.xfce.org
+Source0:	%{name}-%{version}.tar.bz2
+BuildRequires:	glib2-devel >= 2.0.0
 BuildRequires:	gtk-doc
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Basic utility non-GUI functions for Xfce4.
 
-%package -n %{lib_name}
+%package -n %{libname}
 Summary:	Utility library for the Xfce4 desktop environment
 Group:		Graphical desktop/Xfce
 
-%description -n %{lib_name}
+%description -n %{libname}
 Utility library for the Xfce4 desktop environment.
 
-%package -n %{lib_name}-devel
+%package -n %{libname}-devel
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	gtk-doc
 Requires:	xfce-dev-tools
-Requires:	%{lib_name} = %{version}
-Provides:       libxfce4util-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
+Provides:	libxfce4util-devel = %{version}-%{release}
 
-%description -n %{lib_name}-devel
+%description -n %{libname}-devel
 Libraries and header files for the %{name} library.
 
-
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-%configure2_5x --sysconfdir=%_sysconfdir/X11
+%configure2_5x \
+	--sysconfdir=%{_sysconfdir}/X11
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 # (mpol) 4.1.99.1: remove for now
-rm -f $RPM_BUILD_ROOT%{_sbindir}/xfce4-kiosk-query
+rm -f %{buildroot}%{_sbindir}/xfce4-kiosk-query
 
 %find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-%post  -n %{lib_name} -p /sbin/ldconfig
+%post  -n %{libname} -p /sbin/ldconfig
 
-%postun  -n %{lib_name} -p /sbin/ldconfig
+%postun  -n %{libname} -p /sbin/ldconfig
 
 
-%files -n %{lib_name}
+%files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog COPYING TODO
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.%{major}*
 %{_datadir}/gtk-doc/html/*
-%files -n %{lib_name}-devel -f%{name}.lang
-%defattr(-, root, root)
+
+%files -n %{libname}-devel -f%{name}.lang
+%defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_libdir}/*a
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
-
-
