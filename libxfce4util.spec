@@ -30,7 +30,7 @@ Group:		Development/Other
 Requires:	gtk-doc
 Requires:	xfce-dev-tools
 Requires:	%{libname} = %{version}-%{release}
-Provides:	xfce4util-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname xfce4util 4 -d
 
 %description -n %{develname}
