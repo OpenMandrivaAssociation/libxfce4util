@@ -1,10 +1,11 @@
 %define major 4
 %define libname %mklibname xfce4util %{major} 
+%define develname %mklibname xfce4util -d
 
 Summary:	Utility library for the Xfce4 desktop environment
 Name:		libxfce4util
 Version:	4.4.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	BSD
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -23,15 +24,16 @@ Group:		Graphical desktop/Xfce
 %description -n %{libname}
 Utility library for the Xfce4 desktop environment.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	gtk-doc
 Requires:	xfce-dev-tools
 Requires:	%{libname} = %{version}-%{release}
-Provides:	libxfce4util-devel = %{version}-%{release}
+Provides:	xfce4util-devel = %{version}-%{release}
+Obsoletes:	%mklibname xfce4util 4 -d
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Libraries and header files for the %{name} library.
 
 %prep
@@ -54,18 +56,17 @@ rm -f %{buildroot}%{_sbindir}/xfce4-kiosk-query
 %clean
 rm -rf %{buildroot}
 
-%post  -n %{libname} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun  -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-
-%files -n %{libname}
+%files -n %{libname} -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog COPYING TODO
 %{_libdir}/lib*.so.%{major}*
 %{_datadir}/gtk-doc/html/*
 
-%files -n %{libname}-devel -f%{name}.lang
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_libdir}/*a
