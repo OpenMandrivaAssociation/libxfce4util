@@ -36,6 +36,13 @@ Obsoletes:	%mklibname xfce4util 4 -d
 %description -n %{develname}
 Libraries and header files for the %{name} library.
 
+%package -n xfce-kiosk
+Summary:	Kiosk support for the Xfce desktop environment
+Group:		Graphical desktop/Xfce
+
+%description -n xfce-kiosk
+Kiosk support for the Xfce desktop environment.
+
 %prep
 %setup -q
 
@@ -47,9 +54,6 @@ Libraries and header files for the %{name} library.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-# (mpol) 4.1.99.1: remove for now
-rm -f %{buildroot}%{_sbindir}/xfce4-kiosk-query
 
 %find_lang %{name}
 
@@ -73,3 +77,7 @@ rm -rf %{buildroot}
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
+ 
+%files -n xfce-kiosk
+%defattr(-,root,root)
+%{_sbindir}/xfce4-kiosk-query
