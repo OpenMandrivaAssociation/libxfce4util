@@ -4,9 +4,9 @@
 
 Summary:	Utility library for the Xfce4 desktop environment
 Name:		libxfce4util
-Version:	4.4.1
-Release:	%mkrel 3
-License:	BSD
+Version:	4.4.2
+Release:	%mkrel 1
+License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
@@ -39,6 +39,7 @@ Libraries and header files for the %{name} library.
 %package -n xfce-kiosk
 Summary:	Kiosk support for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
+Requires:	%{libname} = %{version}-%{release}
 
 %description -n xfce-kiosk
 Kiosk support for the Xfce desktop environment.
