@@ -2,7 +2,7 @@
 %define libname %mklibname xfce4util %{major} 
 %define develname %mklibname xfce4util -d
 
-Summary:	Utility library for the Xfce4 desktop environment
+Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.4.2
 Release:	%mkrel 2
@@ -11,18 +11,17 @@ Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	glib2-devel >= 2.0.0
-BuildRequires:	gtk-doc
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-Basic utility non-GUI functions for Xfce4.
+Basic utility non-GUI functions for Xfce desktop environment.
 
 %package -n %{libname}
-Summary:	Utility library for the Xfce4 desktop environment
+Summary:	Utility library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
 
 %description -n %{libname}
-Utility library for the Xfce4 desktop environment.
+Utility library for the Xfce desktop environment.
 
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
@@ -67,9 +66,8 @@ rm -rf %{buildroot}
 
 %files -n %{libname} -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING TODO
+%doc AUTHORS ChangeLog TODO
 %{_libdir}/lib*.so.%{major}*
-%{_datadir}/gtk-doc/html/*
 
 %files -n %{develname}
 %defattr(-,root,root)
@@ -78,6 +76,7 @@ rm -rf %{buildroot}
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
+%{_datadir}/gtk-doc/html/*
  
 %files -n xfce-kiosk
 %defattr(-,root,root)
