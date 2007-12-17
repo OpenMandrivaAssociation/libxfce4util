@@ -11,7 +11,6 @@ Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	glib2-devel >= 2.0.0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Basic utility non-GUI functions for Xfce desktop environment.
