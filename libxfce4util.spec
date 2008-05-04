@@ -5,12 +5,14 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.4.2
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
+Patch0:		%{name}-4.4.2-config-dirs.patch
 BuildRequires:	glib2-devel >= 2.0.0
+Requires:	xdg-user-dirs-gtk
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -45,6 +47,7 @@ Kiosk support for the Xfce desktop environment.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure2_5x \
