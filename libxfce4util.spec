@@ -5,7 +5,7 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.4.2
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -47,11 +47,16 @@ Kiosk support for the Xfce desktop environment.
 
 %prep
 %setup -q
+%if %mdkversion < 200900
 %patch0 -p1
+%endif
 
 %build
 %configure2_5x \
+%if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11
+%endif
+
 %make
 
 %install
