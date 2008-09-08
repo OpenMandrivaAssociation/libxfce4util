@@ -11,8 +11,8 @@ Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		%{name}-4.4.2-config-dirs.patch
-BuildRequires:	glib2-devel >= 2.0.0
-Requires:	xdg-user-dirs-gtk
+Patch1:		%{name}-4.4.2-xdg-user-dirs.patch
+BuildRequires:	glib2-devel >= 2.14.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -21,6 +21,7 @@ Basic utility non-GUI functions for Xfce desktop environment.
 %package -n %{libname}
 Summary:	Utility library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
+Requires:	xdg-user-dirs
 
 %description -n %{libname}
 Utility library for the Xfce desktop environment.
@@ -50,6 +51,7 @@ Kiosk support for the Xfce desktop environment.
 %if %mdkversion < 200900
 %patch0 -p1
 %endif
+%patch1 -p1 -b .xdg
 
 %build
 %configure2_5x \
