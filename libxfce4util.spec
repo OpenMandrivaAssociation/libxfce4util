@@ -12,6 +12,7 @@ URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		%{name}-4.4.2-config-dirs.patch
 BuildRequires:	glib2-devel >= 2.14.0
+BuildRequires:	xfce4-dev-tools >= %{version}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -29,7 +30,7 @@ Utility library for the Xfce desktop environment.
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	gtk-doc
-Requires:	xfce4-dev-tools
+Requires:	xfce4-dev-tools >= %{version}
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname xfce4util 4 -d
