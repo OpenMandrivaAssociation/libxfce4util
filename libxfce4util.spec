@@ -1,10 +1,10 @@
 %define major 4
-%define libname %mklibname xfce4util %{major} 
+%define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.5.92
+Version:	4.5.93
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -90,7 +90,7 @@ rm -rf %{buildroot}
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
 %{_datadir}/gtk-doc/html/*
- 
+
 %files -n xfce-kiosk
 %defattr(-,root,root)
 %{_sbindir}/xfce4-kiosk-query
