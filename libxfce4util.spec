@@ -4,15 +4,15 @@
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.6.0
-Release:	%mkrel 2
+Version:	4.6.1
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-4.4.2-config-dirs.patch
 BuildRequires:	glib2-devel >= 2.14.0
-BuildRequires:	xfce4-dev-tools >= %{version}
+BuildRequires:	xfce4-dev-tools >= 4.6.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -30,7 +30,7 @@ Utility library for the Xfce desktop environment.
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	gtk-doc
-Requires:	xfce4-dev-tools >= %{version}
+Requires:	xfce4-dev-tools >= 4.6.0
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname xfce4util 4 -d
