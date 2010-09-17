@@ -5,7 +5,7 @@
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.6.2
+Version:	4.7.2
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
