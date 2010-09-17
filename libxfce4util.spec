@@ -1,3 +1,4 @@
+%define url_ver %(echo %{version} | cut -c 1-3)
 %define major 4
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
@@ -9,7 +10,7 @@ Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-4.4.2-config-dirs.patch
 BuildRequires:	glib2-devel >= 2.14.0
 BuildRequires:	xfce4-dev-tools >= 4.6.0
