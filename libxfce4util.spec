@@ -6,7 +6,7 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.8.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -27,6 +27,15 @@ Requires:	xdg-user-dirs
 %description -n %{libname}
 Utility library for the Xfce desktop environment.
 
+%package -n %{libname}-common
+Summary:	Common files for Xfce utility library
+Group:		Graphical desktop/Xfce
+Requires:	%{libname}-common = %{version}-%{release}
+Conflicts:	%{mklibname xfce4util} < 4.8.2-2
+
+%description -n %{libname}-common
+Common files for %{libname}.
+
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
@@ -34,7 +43,7 @@ Requires:	gtk-doc
 Requires:	xfce4-dev-tools >= 4.6.0
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%mklibname xfce4util 4 -d
+Obsoletes:	%{mklibname xfce4util 4 -d}
 
 %description -n %{develname}
 Libraries and header files for the %{name} library.
@@ -49,15 +58,10 @@ Kiosk support for the Xfce desktop environment.
 
 %prep
 %setup -q
-%if %mdkversion < 200900
-%patch0 -p1
-%endif
 
 %build
 %configure2_5x \
-%if %mdkversion < 200900
-	--sysconfdir=%{_sysconfdir}/X11
-%endif
+	--disable-static
 
 %make
 
@@ -65,28 +69,21 @@ Kiosk support for the Xfce desktop environment.
 rm -rf %{buildroot}
 %makeinstall_std
 
-%find_lang %{name}
+%find_lang %{name} %{name}.lang
 
 %clean
 rm -rf %{buildroot}
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%files -n %{libname} -f %{name}.lang
+%files -n %{libname}
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog TODO
 %{_libdir}/lib*.so.%{major}*
+
+%files -n %{libname}-common -f %{name}.lang
+%doc AUTHORS ChangeLog TODO
 
 %files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so
-%{_libdir}/*a
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
