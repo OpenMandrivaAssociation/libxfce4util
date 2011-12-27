@@ -1,4 +1,4 @@
-%define url_ver %(echo %{version} | cut -c 1-3)
+%define url_ver %(echo %{version} | cut -d. -f1,2)
 %define major 4
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
@@ -6,7 +6,7 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.8.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -23,18 +23,24 @@ Basic utility non-GUI functions for Xfce desktop environment.
 Summary:	Utility library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
 Requires:	xdg-user-dirs
+Requires:	%{name}-common = %{version}-%{release}
 
 %description -n %{libname}
 Utility library for the Xfce desktop environment.
 
-%package -n %{libname}-common
+%package common
 Summary:	Common files for Xfce utility library
 Group:		Graphical desktop/Xfce
-Requires:	%{libname}-common = %{version}-%{release}
-Conflicts:	%{mklibname xfce4util} < 4.8.2-2
+BuildArch:	noarch
+Conflicts:	%{mklibname xfce4util} < 4.8.2-3
+Conflicts:	libxfce4util4 < 4.8.2-3
+Conflicts:	lib64xfce4util4 < 4.8.2-3
+Conflicts:	libxfce4util4-common < 4.8.2-3
+Conflicts:	lib64xfce4util4-common < 4.8.2-3
+Obsoletes:	%{name}4-common < 4.8.2-3
 
-%description -n %{libname}-common
-Common files for %{libname}.
+%description common
+Common files for %{name}.
 
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
@@ -78,7 +84,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
 
-%files -n %{libname}-common -f %{name}.lang
+%files common -f %{name}.lang
 %doc AUTHORS ChangeLog TODO
 
 %files -n %{develname}
