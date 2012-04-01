@@ -5,16 +5,15 @@
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.8.2
-Release:	%mkrel 3
+Version:	4.9.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-4.4.2-config-dirs.patch
 BuildRequires:	glib2-devel >= 2.14.0
-BuildRequires:	xfce4-dev-tools >= 4.6.0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRequires:	xfce4-dev-tools >= 4.9.0
 
 %description
 Basic utility non-GUI functions for Xfce desktop environment.
@@ -72,23 +71,17 @@ Kiosk support for the Xfce desktop environment.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %find_lang %{name} %{name}.lang
 
-%clean
-rm -rf %{buildroot}
-
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
 
 %files common -f %{name}.lang
 %doc AUTHORS ChangeLog TODO
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/xfce4
