@@ -1,5 +1,5 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
-%define major 4
+%define major 6
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
 
@@ -11,7 +11,6 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-4.4.2-config-dirs.patch
 BuildRequires:	glib2-devel >= 2.14.0
 BuildRequires:	xfce4-dev-tools >= 4.9.0
 
@@ -45,7 +44,7 @@ Common files for %{name}.
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	gtk-doc
-Requires:	xfce4-dev-tools >= 4.6.0
+Requires:	xfce4-dev-tools >= 4.9.0
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname xfce4util 4 -d}
