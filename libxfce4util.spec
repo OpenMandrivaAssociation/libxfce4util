@@ -6,7 +6,7 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.9.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -43,7 +43,6 @@ Common files for %{name}.
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
-Requires:	gtk-doc
 Requires:	xfce4-dev-tools >= 4.9.0
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
@@ -88,5 +87,4 @@ Kiosk support for the Xfce desktop environment.
 %{_datadir}/gtk-doc/html/*
 
 %files -n xfce-kiosk
-%defattr(-,root,root)
 %{_sbindir}/xfce4-kiosk-query
