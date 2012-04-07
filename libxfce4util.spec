@@ -6,7 +6,7 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.9.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -22,6 +22,7 @@ Summary:	Utility library for the Xfce desktop environment
 Group:		Graphical desktop/Xfce
 Requires:	xdg-user-dirs
 Requires:	%{name}-common = %{version}-%{release}
+Conflicts:	xfce-utils <= 4.8.3-1
 
 %description -n %{libname}
 Utility library for the Xfce desktop environment.
@@ -35,6 +36,7 @@ Conflicts:	libxfce4util4 < 4.8.2-3
 Conflicts:	lib64xfce4util4 < 4.8.2-3
 Conflicts:	libxfce4util4-common < 4.8.2-3
 Conflicts:	lib64xfce4util4-common < 4.8.2-3
+Conflicts:	xfce-utils <= 4.8.3-1
 Obsoletes:	%{name}4-common < 4.8.2-3
 
 %description common
