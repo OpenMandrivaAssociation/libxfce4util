@@ -6,12 +6,12 @@
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
 Version:	4.10.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	pkgconfig(glib-2.0) >= 2.14.0
+BuildRequires:	glib2-devel >= 2.14.0
 BuildRequires:	xfce4-dev-tools >= 4.9.0
 
 %description
@@ -90,7 +90,6 @@ Kiosk support for the Xfce desktop environment.
 
 %files -n xfce-kiosk
 %{_sbindir}/xfce4-kiosk-query
-
 
 %changelog
 * Mon Apr 30 2012 Tomasz Pawel Gajc <tpg@mandriva.org> 4.10.0-1
