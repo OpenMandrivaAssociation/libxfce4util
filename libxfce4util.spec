@@ -1,12 +1,12 @@
-%define url_ver %(echo %{version} | cut -d. -f1,3)
+%define url_ver %(echo %{version} | cut -d. -f1,2)
 %define major 6
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.10.0
-Release:	2
+Version:	4.10.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
