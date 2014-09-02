@@ -11,8 +11,8 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-BuildRequires:	glib2-devel >= 2.14.0
-BuildRequires:	xfce4-dev-tools >= 4.9.0
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	xfce4-dev-tools >= 4.11.0
 
 %description
 Basic utility non-GUI functions for Xfce desktop environment.
