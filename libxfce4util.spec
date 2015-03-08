@@ -1,5 +1,5 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
-%define major 6
+%define major 7
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
 
