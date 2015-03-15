@@ -1,18 +1,18 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
-%define major 6
+%define major 7
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.11.0
-Release:	1
+Version:	4.12.1
+Release:	0.1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	xfce4-dev-tools >= 4.11.0
+BuildRequires:	xfce4-dev-tools >= 4.12.0
 
 %description
 Basic utility non-GUI functions for Xfce desktop environment.
