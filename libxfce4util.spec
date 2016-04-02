@@ -12,6 +12,7 @@ Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	gtk-doc
 BuildRequires:	xfce4-dev-tools >= 4.12.0
 
 %description
