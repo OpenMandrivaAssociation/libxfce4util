@@ -16,7 +16,7 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	gtk-doc
+#BuildRequires:	gtk-doc
 BuildRequires:	xfce4-dev-tools >= 4.12.0
 
 %description
@@ -80,7 +80,7 @@ Kiosk support for the Xfce desktop environment.
 %autopatch -p1
 
 %build
-%xdt_autogen
+#xdt_autogen
 %configure \
 	--disable-static \
 	--enable-introspection
