@@ -82,7 +82,7 @@ Kiosk support for the Xfce desktop environment.
 
 %build
 #xdt_autogen
-%configure \
+%configure2_5x \
 	--disable-static \
 	--enable-introspection
 	
