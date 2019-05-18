@@ -1,17 +1,21 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
 %define major 7
+%define api 1.0
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
+%define girname	%mklibname xfce4util-gir %{api}
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.12.1
-Release:	2
+Version:	4.13.3
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+BuildRequires:	intltool
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	gtk-doc
 BuildRequires:	xfce4-dev-tools >= 4.12.0
 
@@ -48,11 +52,20 @@ Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	xfce4-dev-tools >= 4.9.0
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname xfce4util 4 -d}
 
 %description -n %{develname}
 Libraries and header files for the %{name} library.
+
+%package -n %{girname}
+Summary:	GObject Introspection interface description for %{name}
+Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %{girname}
+GObject Introspection interface description for %{name}.
 
 %package -n xfce-kiosk
 Summary:	Kiosk support for the Xfce desktop environment
@@ -64,15 +77,16 @@ Kiosk support for the Xfce desktop environment.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %configure \
 	--disable-static
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %find_lang %{name} %{name}.lang
 
@@ -88,6 +102,9 @@ Kiosk support for the Xfce desktop environment.
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
 %{_datadir}/gtk-doc/html/*
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/libxfce4util-%{api}.typelib
 
 %files -n xfce-kiosk
 %{_sbindir}/xfce4-kiosk-query
