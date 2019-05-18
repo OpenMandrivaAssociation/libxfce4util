@@ -17,7 +17,7 @@ BuildRequires:	intltool
 BuildRequires:  gettext
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	gtk-doc
+#BuildRequires:	gtk-doc
 BuildRequires:	xfce4-dev-tools >= 4.12.0
 
 %description
@@ -84,6 +84,7 @@ Kiosk support for the Xfce desktop environment.
 #xdt_autogen
 %configure2_5x \
 	--disable-static \
+	--disable--gtk-doc \
 	--enable-introspection
 	
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
