@@ -94,7 +94,7 @@ Kiosk support for the Xfce desktop environment.
 %autopatch -p1
 
 %build
-%configure \
+%configure
 %make_build
 
 %install
