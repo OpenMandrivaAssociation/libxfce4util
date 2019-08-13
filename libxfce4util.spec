@@ -83,7 +83,7 @@ Libraries and header files for the %{name} library.
 %package -n %{girname}
 Summary: GObject Introspection interface for %{name}
 Group: System/Libraries
-Requires: %{name} >= %{EVRD}
+Requires: %{libname} >= %{EVRD}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
