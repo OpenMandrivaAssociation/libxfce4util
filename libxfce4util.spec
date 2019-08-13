@@ -2,6 +2,8 @@
 %define major 7
 %define libname %mklibname xfce4util %{major}
 %define develname %mklibname xfce4util -d
+%define girname %mklibname %{name}-gir
+
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
@@ -12,8 +14,9 @@ Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  gettext
-BuildRequires:	gtk-doc
+#BuildRequires:	gtk-doc
 BuildRequires:	xfce4-dev-tools >= 4.12.0
 
 %description
@@ -61,6 +64,7 @@ Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
 Requires:	xfce4-dev-tools >= 4.9.0
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname xfce4util 4 -d}
 
@@ -73,6 +77,19 @@ Libraries and header files for the %{name} library.
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
 %{_datadir}/gtk-doc/html/*
+%{_datadir}/gir-1.0/%{name}-1.0.gir
+
+#---------------------------------------------------------------
+%package -n %{girname}
+Summary: GObject Introspection interface for %{name}
+Group: System/Libraries
+Requires: %{name} >= %{EVRD}
+
+%description -n %{girname}
+GObject Introspection interface description for %{name}.
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/%{name}-1.0.typelib
 
 #---------------------------------------------------------------------------
 
