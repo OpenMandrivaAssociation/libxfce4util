@@ -78,7 +78,8 @@ Libraries and header files for the %{name} library.
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
 %{_datadir}/gtk-doc/html/*
-#{_datadir}/gir-1.0/%{name}-1.0.gir
+%{_datadir}/gir-1.0/Libxfce4util-1.0.gir
+%{_datadir}/vala/vapi/libxfce4util-1.0.vapi
 
 #---------------------------------------------------------------
 %package -n %{girname}
@@ -90,7 +91,7 @@ Requires: %{libname} >= %{EVRD}
 GObject Introspection interface description for %{name}.
 
 %files -n %{girname}
-#{_libdir}/girepository-1.0/%{name}-1.0.typelib
+%{_libdir}/girepository-1.0/Libxfce4util-1.0.typelib
 
 #---------------------------------------------------------------------------
 
