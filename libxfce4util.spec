@@ -112,9 +112,6 @@ Kiosk support for the Xfce desktop environment.
 %autopatch -p1
 
 %build
-%ifnarch %aarch64
-%xdt_autogen
-%endif
 %configure
 %make_build
 
