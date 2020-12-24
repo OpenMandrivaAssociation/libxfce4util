@@ -78,7 +78,7 @@ Libraries and header files for the %{name} library.
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
 %{_datadir}/gtk-doc/html/*
-%{_datadir}/gir-1.0/%{name}-1.0.gir
+#{_datadir}/gir-1.0/%{name}-1.0.gir
 
 #---------------------------------------------------------------
 %package -n %{girname}
