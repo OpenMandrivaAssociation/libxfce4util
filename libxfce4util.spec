@@ -7,7 +7,7 @@
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.14.0
+Version:	4.16.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -15,6 +15,7 @@ URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  gettext
 #BuildRequires:	gtk-doc
 BuildRequires:	xfce4-dev-tools >= 4.12.0
@@ -55,7 +56,7 @@ Obsoletes:	%{name}4-common < 4.8.2-3
 Common files for %{name}.
 
 %files common -f %{name}.lang
-%doc AUTHORS ChangeLog TODO
+%doc AUTHORS ChangeLog TODO README.md
 
 #---------------------------------------------------------------------------
 
@@ -77,7 +78,8 @@ Libraries and header files for the %{name} library.
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/%{name}
 %{_datadir}/gtk-doc/html/*
-%{_datadir}/gir-1.0/%{name}-1.0.gir
+%{_datadir}/gir-1.0/Libxfce4util-1.0.gir
+%{_datadir}/vala/vapi/libxfce4util-1.0.vapi
 
 #---------------------------------------------------------------
 %package -n %{girname}
@@ -89,7 +91,7 @@ Requires: %{libname} >= %{EVRD}
 GObject Introspection interface description for %{name}.
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/%{name}-1.0.typelib
+%{_libdir}/girepository-1.0/Libxfce4util-1.0.typelib
 
 #---------------------------------------------------------------------------
 
@@ -111,9 +113,6 @@ Kiosk support for the Xfce desktop environment.
 %autopatch -p1
 
 %build
-%ifnarch %aarch64
-%xdt_autogen
-%endif
 %configure
 %make_build
 
