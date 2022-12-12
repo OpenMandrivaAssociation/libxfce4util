@@ -7,7 +7,7 @@
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.16.0
+Version:	4.17.4
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -18,7 +18,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  gettext
 #BuildRequires:	gtk-doc
-BuildRequires:	xfce4-dev-tools >= 4.12.0
+BuildRequires:	xfce4-dev-tools >= 4.17.0
 
 %description
 Basic utility non-GUI functions for Xfce desktop environment.
