@@ -1,24 +1,25 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
 %define major 7
-%define libname %mklibname xfce4util %{major}
+%define libname %mklibname xfce4util
+%define oldlibname %mklibname xfce4util 7
 %define develname %mklibname xfce4util -d
 %define girname %mklibname %{name}-gir
 
 
 Summary:	Utility library for the Xfce desktop environment
 Name:		libxfce4util
-Version:	4.18.2
+Version:	4.20.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		https://www.xfce.org
-Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  gettext
 #BuildRequires:	gtk-doc
-BuildRequires:	xfce4-dev-tools >= 4.17.0
+BuildRequires:	xfce4-dev-tools >= 4.20.0
 
 %description
 Basic utility non-GUI functions for Xfce desktop environment.
@@ -31,6 +32,7 @@ Group:		Graphical desktop/Xfce
 Requires:	xdg-user-dirs
 Requires:	%{name}-common = %{version}-%{release}
 Conflicts:	xfce-utils <= 4.8.3-1
+%rename %{oldlibname}
 
 %description -n %{libname}
 Utility library for the Xfce desktop environment.
@@ -56,14 +58,14 @@ Obsoletes:	%{name}4-common < 4.8.2-3
 Common files for %{name}.
 
 %files common -f %{name}.lang
-%doc AUTHORS ChangeLog TODO README.md
+%doc AUTHORS ChangeLog README.md
 
 #---------------------------------------------------------------------------
 
 %package -n %{develname}
 Summary:	Libraries and header files for the %{name} library
 Group:		Development/Other
-Requires:	xfce4-dev-tools >= 4.9.0
+Requires:	xfce4-dev-tools >= 4.20.0
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{girname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
